@@ -1,0 +1,21 @@
+// 섹션 번호는 원문(0.~6.)을 제목에 그대로 두므로 자동 번호는 끔.
+// :sectnums:
+:sectnumlevels: 4
+:toc:
+:toc-placement: macro
+:toclevels: 3
+:icons: font
+:pdf-themesdir: ../template/theme
+// flow = 챕터 강제 페이지나눔 끔 (페이지 나눔은 본문 <<< 로 직접 제어). 기본 테마는 pdf-theme.yml
+:pdf-theme: flow
+:imagesdir: images
+:imagesoutdir: generated-images
+:table-caption: 표
+:image-caption: 그림
+:figure-caption: 그림
+:stem: latexmath
+:eqnums: all
+:xrefstyle: short
+:source-highlighter: highlight.js
+:rouge-style: github
+:running-content-start-at: 2

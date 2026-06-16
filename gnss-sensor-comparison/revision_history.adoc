@@ -1,0 +1,26 @@
+[.document-revision-title]
+[discrete]
+== 변경 이력
+
+[cols="1,4,2,2", options="header"]
+|===
+| 버전
+| 변경 내용
+| 일자
+| 작성자
+
+| v1.0
+| 최초 작성
+| 2026-06-15
+| Seondo Han
+
+| V1.1
+| Calibration 절치 비교 추가 +
+CAN BUS 부하 test 추가 +
+ISO Request 응답 측정 추가
+| 2026-06-16
+| Seondo Han
+
+|===
+
+<<<

@@ -1,0 +1,418 @@
+// 원본: GNSS_센서_비교_검증_계획서_v1.1.htm 에서 변환
+include::metadata.adoc[]
+include::_document_settings.adoc[]
+
+
+// 문서 번호가 부여되는 정식 문서
+:doctype: book
+
+// 제목 및 title-page
+= {document-title}: {product-name}
+
+// Document information (속표지)
+include::../template/pages/document_information.adoc[]
+
+// Revision history
+include::revision_history.adoc[]
+
+// Table of contents
+toc::[]
+
+
+<<<
+
+== 0. 목적 및 개요 (Purpose & Scope)
+
+* 본 계획서는 NEUBOAT에 적용하기 위해 GNSS 항법 센서 4종 — Raymarine AR200(기존 사용 모델), Garmin MSC-10(듀얼 안테나), Garmin GPS 24xd(Valhalla 설치 모델), Hemisphere Vector V200n(Hinckley 설치 모델) — 의 출력 품질을, 정확도 기준(reference) 센서인 VectorNav VN-300(기존 아비커스 2호 설치 모델)을 레퍼런스로 하여 동일 조건에서 비교·검증하기 위한 계획을 정의한다.
+* 노이즈(A)·속도 일관성(B)·정지 산포\(C)의 3개 평가 항목과 NMEA 2000 PGN 수신 rate 안정성은 정답(ground truth)이 없는 reference-free 자기일관성 방식으로 비교하고, 위치·heading·속도의 정확도(D)는 고정밀 GNSS/INS인 VectorNav VN-300을 기준(reference)으로 평가한다.
+* 평가 결과는 단일 종합 점수로 환원하지 않고, 시나리오(정지 / 주행 / 도킹 / 선회) × 평가 기준(A~D)의 매트릭스로 판정한다. 최종적으로 AR200과 유사하거나 더 나은 성능을 보이는 센서를 선정하여 NEUBOAT dock control·navi control 적용까지 확장한다.
+
+<<<
+
+== 1. 사용 센서
+
+_본 검증에 사용하는 GNSS 항법 센서는 비교 대상 4종과 정확도 기준(reference) VN-300 1종을 포함해 총 5종이며, 동일한 설치·로깅 조건에서 나란히 비교한다._
+
+.검증 대상 GNSS 센서 5종 (비교 4종 + 정확도 기준 VN-300 1종)
+[cols="1,2,2,2,3,2",options="header"]
+|===
+| *No.*
+| *모델*
+| *제조사*
+| *주요 특징*
+| *비고*
+| *가격*
+
+| 1
+| AR200
+| Raymarine
+| -
+| 기존 사용 모델
+| $634.99 +
+(west marine)
+
+| 2
+| MSC-10
+| Garmin
+| 듀얼 안테나
+|
+| $1,099.99 +
+(west marine)
+
+| 3
+| GPS 24xd
+| Garmin
+|
+| Valhalla 설치 모델
+| $314.99 +
+(west marine)
+
+| 4
+| Vector V200n
+| Hemisphere
+| 듀얼 안테나
+| Hinckley 설치 모델
+| $1,331.99 +
+(boat gear)
+
+| 5
+| VN-300
+| VectorNav
+| 듀얼 안테나
+| 기존 아비커스 2호 설치 모델 · 정확도 기준(reference)
+| $5,375 +
+(NavtechGPS)
+
+|===
+
+<<<
+
+== 2. 실험 계획
+
+_안테나 설치·고정은 내부 공간이 있고 천공이 용이한 FIBOX 인클로저를 구매하여 사용하며, 아비커스 2호 천장 프로파일에 고정한다. 로깅은 로컬 PC Kvaser와 ORU를 사용하여 각각 1회씩, 총 2회 수행한다._
+
+.FIBOX 예시 사진
+// TODO: 원본 문서의 FIBOX 사진(image005)을 images/fibox-example.png 로 추가하세요.
+//       (변환한 .htm 파일에는 이미지 파일이 동봉되어 있지 않습니다.)
+image::fibox-example.png[FIBOX 예시 사진]
+
+=== 설치 및 고정
+
+* 안테나 4종을 내부 공간이 있고 천공이 용이한 FIBOX 인클로저에 장착한다.
+* 인클로저를 아비커스 2호 천장 프로파일에 고정하여 4종 안테나의 상대 위치를 일정하게 유지한다.
+* 정확도 기준인 VN-300은 기존 아비커스 2호 설치 위치를 그대로 사용한다.
+
+=== 로깅 방식 (테스트 2회)
+
+* 1회차: 로컬 PC에서 Kvaser로 NMEA 2000(CAN)과 VN-300을 동시 로깅하며, 시간 동기화(time sync)는 GPS time 기준으로 맞춘다.
+
+NOTE: NMEA 2000으로 수신되는 GPS time의 단위는 10⁻⁴ s(0.1 ms)인 반면 VN-300은 ns 단위이므로, 해상도 차이를 감안해 최대한 정렬(best-effort)하여 동기화한다.
+
+* 2회차: ORU에서 로깅한다. (SP·FGG 모두 로깅 수행) 1회차와 동일하게 VN-300을 함께 로깅할 수 있도록 준비하여 진행한다.
+
+<<<
+
+=== 헤딩 캘리브레이션 절차 비교
+
+_센서마다 heading(전자컴퍼스·듀얼 안테나) 캘리브레이션 절차가 다르므로, 각 센서의 절차를 정리·비교하고 캘리브레이션이 출력 품질에 미치는 영향을 평가한다._
+
+* 각 센서별 heading 캘리브레이션 절차를 문서화하여 비교한다 — 요구 동작·소요 시간·난이도·재현성.
+* 캘리브레이션 전·후를 각각 로깅하여 heading accuracy(D2)와 heading 안정성을 비교하고, 캘리브레이션의 영향도(개선 폭)를 확인한다.
+
+=== 테스트 1회당 주행 시나리오 (5종)
+
+_각 로깅 회차마다 아래 5개 시나리오를 순차로 수행하여, 정지·저속·일반주행·선회 등 운항 상태별 센서 거동을 모두 확보한다._
+
+.테스트 1회당 주행 시나리오
+[cols="1,2,3,3",options="header"]
+|===
+| *No.*
+| *시나리오*
+| *조건*
+| *주요 관찰 지표*
+
+| 1
+| 정지 상태
+| 15분 이상 정지
+| C1 CEP(50/95%) +
+D1·D2 정확도 +
+PGN rate σ
+
+| 2
+| 자동 접안
+| 자동 접안 3회
+| A2 jerk +
+B1~B3 속도 일관성 +
+D1·D2·D3 정확도
+
+| 3
+| 수동 접안
+| 수동 접안 3회
+| A2 jerk +
+B1~B3 속도 +
+D1·D2·D3 정확도
+
+| 4
+| 일반 주행
+| 약 3분 직진 주행, 10노트 내외
+| A1·A2 jerk +
+B1~B5 속도 +
+D1·D2·D3 정확도
+
+| 5
+| 선회 주행
+| 최대 타각, 5노트 내외, 3바퀴
+| B4·B5 (종·횡 속도) +
+D1·D2·D3 정확도 +
+heading↔COG · ROT
+
+|===
+
+<<<
+
+== 3. 평가 항목
+
+_노이즈(A)·속도 일관성(B)·정지 산포\(C)의 3개 평가 항목은 정답(ground truth)이 없는 reference-free 자기일관성 방식으로 평가하고, 위치·heading·속도의 정확도(D)는 고정밀 GNSS/INS인 VN-300을 기준(reference)으로 평가한다._
+
+상대 비교의 기준선(baseline)은 기존 사용 모델인 AR200으로 두며, A·C 지표는 AR200 대비 개선율(%)로 표기한다. 절대 정확도의 기준(reference)으로는 고정밀 GNSS/INS인 VectorNav VN-300을 사용하여, 위치·heading·속도의 정확도(D 그룹)를 VN-300 출력 대비 RMSE로 평가한다. B2~B5은 2회차 ORU를 사용하여 로깅할 때만 평가한다.
+
+.평가 지표 요약 (A 노이즈 / B 속도 / C 정지 산포 / D 정확도 vs VN-300)
+[cols="1,3,2,1,3",options="header"]
+|===
+| *#*
+| *지표*
+| *그룹*
+| *단위*
+| *비고*
+
+| A1
+| position jerk
+| 노이즈
+| m
+| 위치 2차 차분
+
+| A2
+| velocity jerk
+| 노이즈
+| m/s
+| 속도 2차 차분
+
+| B1
+| N2K SOG vs ref SOG RMSE
+| 속도
+| m/s
+| N2K SOG ↔ ref SOG
+
+| B2
+| FGG SOG vs N2K SOG RMSE
+| 속도
+| m/s
+| 필터속도 ↔ N2K SOG
+
+| B3
+| FGG SOG vs ref SOG
+| 속도
+| m/s
+| 필터속도 ↔ ref SOG
+
+| B4
+| FGG u vs ref u
+| 속도
+| m/s
+| 필터 종방향 속도 ↔ ref 종방향 속도
+
+| B5
+| FGG v vs ref v
+| 속도
+| m/s
+| 필터 횡방향 속도 ↔ ref 횡방향 속도
+
+| C1
+| stationary CEP (CEP50 / R95)
+| 산포
+| m
+| 정지 중 수평 위치 산포: 50%(CEP50)·95%(R95) 반경
+
+| D1
+| position accuracy (vs VN-300)
+| 정확도
+| m
+| VN-300 대비 수평 위치 RMSE
+
+| D2
+| heading accuracy (vs VN-300)
+| 정확도
+| deg
+| VN-300 대비 헤딩 RMSE
+
+| D3
+| speed accuracy (vs VN-300)
+| 정확도
+| m/s
+| VN-300 대비 속도(SOG) RMSE
+
+|===
+
+<<<
+
+=== 지표 측정 방법
+
+.지표 측정 방법
+[cols="2,4,3",options="header"]
+|===
+| *지표*
+| *측정 방법*
+| *수식 (예)*
+
+| A1 position jerk
+| 위치 시계열의 2차 차분(고주파 성분)의 RMS
+| RMS(Δ²p), Δ²p[k]=p[k+1]−2p[k]+p[k−1]
+
+| A2 velocity jerk
+| 속도 시계열의 2차 차분(가속도 변화)의 RMS
+| RMS(Δ²v)
+
+| B1 N2K SOG vs ref SOG
+| N2K(NMEA 2000) SOG와 기준(VN-300) SOG 차의 RMSE
+| RMS(SOG_N2K − SOG_ref)
+
+| B2 FGG SOG vs N2K SOG
+| 필터(FGG) 출력 SOG와 N2K SOG 차의 RMSE
+| RMS(SOG_FGG − SOG_N2K)
+
+| B3 FGG SOG vs ref SOG
+| 필터(FGG) SOG와 기준(VN-300) SOG 차의 RMSE
+| RMS(SOG_FGG − SOG_ref)
+
+| B4 FGG u vs ref u
+| 필터 종방향 속도 u와 기준 u 차의 RMSE
+| RMS(u_FGG − u_ref)
+
+| B5 FGG v vs ref v
+| 필터 횡방향 속도 v와 기준 v 차의 RMSE
+| RMS(v_FGG − v_ref)
+
+| C1 stationary CEP
+| 정지 구간 수평 위치의 중심 기준 반경거리(radial)를 정렬해 백분위 반경 산출 (CEP50=50%, R95=95%)
+| CEP50 = P50(‖p−p̄‖), R95 = P95(‖p−p̄‖); 근사 CEP50 ≈ 0.59(σx+σy)
+
+| D1 position accuracy
+| VN-300 위치와의 수평거리 차 RMSE
+| RMS(‖p − p_VN300‖)
+
+| D2 heading accuracy
+| VN-300 heading과의 차(±180° 보정) RMSE
+| RMS(wrap(ψ − ψ_VN300))
+
+| D3 speed accuracy
+| VN-300 속도(SOG)와의 차 RMSE
+| RMS(SOG − SOG_VN300)
+
+|===
+
+NOTE: 기호 — RMS(x)=√(Σx²/N), Δ²=2차 차분, ‖·‖=거리, wrap=±180° 보정, P50·P95=50·95 백분위, p̄=평균/중심, σ=표준편차; FGG=필터 출력, N2K=NMEA 2000 수신값, ref=VN-300 기준, u·v=종·횡 속도성분, SOG=대지속도.
+
+=== 노이즈 (jerk) 산출
+
+* A1·A2 jerk는 위치·속도 시계열의 2차 차분으로 산출한다 — 2차 차분이 등속 운동 성분을 자동 상쇄하므로, 별도 추세(trend) 추정 없이 고주파 잔차(노이즈)만 남는다.
+* jerk·노이즈는 등속 직진(일반 주행, 10노트 내외) 구간에서 산출하고, 선회·가감속 구간은 제외한다 — 실제 기동의 가속도 변화가 노이즈로 오인되지 않도록 한다.
+
+시나리오별 우선 지표 — 단일 종합 점수로 합치지 말고, 시나리오 × A~D 매트릭스로 판정한다.
+
+.시나리오별 핵심 평가 지표
+[cols="2,4,3",options="header"]
+|===
+| *시나리오*
+| *우선 지표*
+| *이유*
+
+| 정지
+| C1, D1·D2
+| 정지 위치 산포·정확도가 본질 (lag는 N/A)
+
+| 일반 주행
+| A1·A2, B1~B3, D1·D3
+| 노이즈↔지연 트레이드오프, 속도 타당성
+
+| 저속 / 도킹
+| C1, B1·B2, A2, D1
+| 저속 정확도·산포·전이 스파이크
+
+| 선회
+| heading↔COG 정합, ROT, D2
+| 선회 추종·각속도 안정성
+
+|===
+
+=== PGN 수신 Rate 평가
+
+_발행 주기 일관성 검증_
+
+각 센서가 스펙(발행 주기)대로 일정하게 데이터를 발행하는지 검증한다. 하기 PGN별로 수신 간격을 측정하여 수신 rate의 표준편차(σ)를 비교하며, σ가 작을수록 발행 주기가 안정적임을 의미한다. 데이터 누락(drop)·중복·주기 이탈(jitter)도 함께 확인한다.
+
+.평가 대상 PGN 및 스펙 발행 주기
+[cols="1,2,3,3",options="header"]
+|===
+| *PGN*
+| *항목*
+| *스펙 주기*
+| *평가 지표*
+
+| 0x1F112
+| Heading
+| 100 ms
+| 수신 간격 평균·σ, drop율
+
+| 0x1F113
+| Rate of Turn
+| 100 ms
+| 수신 간격 평균·σ, drop율
+
+| 0x1F119
+| Attitude
+| 100 ms
+| 수신 간격 평균·σ, drop율
+
+| 0x1F801
+| Position, Rapid update
+| 100 ms
+| 수신 간격 평균·σ, drop율
+
+| 0x1F802
+| COG & SOG
+| 100 ms
+| 수신 간격 평균·σ, drop율
+
+| 0x1F805
+| GNSS Position
+| 1 s
+| 수신 간격 평균·σ, drop율
+
+|===
+
+=== 버스 부하·ISO 요청 응답 측정
+
+* 정상 부하뿐 아니라 버스 부하(busload) 50%·70% 조건에서도 수신 rate를 측정한다 — Kvaser의 트래픽 생성(traffic generation) 기능으로 버스 부하를 인가한다.
+
+NOTE: 버스 부하 테스트는 1회차 로컬 PC를 사용할 때만 수행한다.
+
+* ISO request(PGN 0xEA00)를 발송하여 address claim(PGN 0xEE00)·product information(PGN 0x1F014) 응답성도 함께 확인한다.
+
+<<<
+
+== 4. 종합 판정 및 한계
+
+* 판정은 단일 종합 점수로 환원하지 않고, 시나리오(정지/주행/도킹/선회) × 평가 기준(A/B/C/D) + PGN rate σ 로 본다.
+* A~C는 상대·자기일관성 지표이며, 위치·heading·속도의 정확도(D)는 VN-300을 기준(reference)으로 평가한다.
+* 지연(lag)·jitter는 PGN 수신 Rate 평가(σ·jitter)에서 다룬다.
+
+== 5. 향후 계획 — 선정 센서 적용
+
+*Dock Control · Navi Control 적용*
+
+본 검증 결과를 바탕으로 선정한 센서를 NEUBOAT에 적용하여 dock control과 navi control을 수행한다.
+
+=== 센서 선정 기준
+
+* 기존 사용 모델인 AR200과 유사하거나 더 나은 성능을 보이는 센서를 우선 선정한다.
+* A~C 자기일관성 지표와 D(VN-300 대비 위치·heading·속도 정확도)에서 AR200 이상으로 확인된 센서를 후보로 한다.
