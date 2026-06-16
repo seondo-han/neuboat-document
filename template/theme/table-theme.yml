@@ -1,0 +1,12 @@
+table:
+  font-size: 8
+  head:
+    background_color: f5f5f5
+    font-size: 9
+    font-style: bold
+    text-transform: uppercase
+  header-cell:
+    font-style: bold
+  border-color: ['AFAFAF', transparent, 'AFAFAF', transparent]
+  caption:
+    end: top

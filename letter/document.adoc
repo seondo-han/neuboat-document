@@ -1,0 +1,19 @@
+include::metadata.adoc[]
+include::_document_settings.adoc[]
+
+// 문서 번호가 부여되지 않는 간단한 letter, notes
+:doctype: article
+
+// 제목 및 title-page
+= {letter-title}
+
+[.text-center]
+{letter-subtitle}
+
+[.text-right]
+**{release-date}** +
+**From: {from-personnel}** +
+**To: {To-personnel}**
+
+
+== Letter Contents...

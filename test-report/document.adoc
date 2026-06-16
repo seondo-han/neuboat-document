@@ -1,0 +1,21 @@
+include::metadata.adoc[]
+include::_document_settings.adoc[]
+
+
+// 문서 번호가 부여되는 정식 테스트 보고서
+:doctype: book
+
+// 제목 및 title-page
+= {product-name}: {report-title}
+
+// Revision history
+include::test_summary.adoc[]
+
+// Table of contents
+toc::[]
+
+
+
+== Example Chapter 1
+
+== Example Chapter 2

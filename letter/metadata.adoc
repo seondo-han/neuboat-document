@@ -1,0 +1,18 @@
+// Letter 제목
+:letter-title: Letter Title
+:header-right: {letter-title}
+
+// Letter 부제목
+:letter-subtitle: Letter Subtitle
+:header-left: Avikus
+
+// 날짜
+:release-date: 202X-XX-XX
+:revdate: {release-date}
+
+// 발신자
+:from-personnel: Sender
+:authors: {from-personnel}
+
+// 수신자
+:to-personnel: Receiver

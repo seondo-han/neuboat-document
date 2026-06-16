@@ -1,0 +1,6 @@
+[discrete]
+== Table List
+
+list-of::table[pagenum=true]
+
+<<<

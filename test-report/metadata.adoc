@@ -1,0 +1,45 @@
+// 제품 이름 (문서 소제목으로 들어감.)
+:product-name: HiNAS
+
+// 문서 이름 (문서 제목으로 들어감.)
+:report-title: Example Test
+:header-right: {report-title}
+
+// 문서 번호
+:report-number: AVK-XXX-TSEXXXX-XXXX
+:header-left: {report-number}
+
+// 제품 버전
+:product-version: vX.X.X
+
+// 프로젝트 관리자: 보통 팀장팀 적으시면 됩니다.
+:project-manager: Gildong Hong
+
+// 문서 주 편집자 혹은 주 저자. 저자 목록 맨 첫번째에 들어갑니다.
+:final-editor: Wonchul Yoo
+
+// 시험 수행 인원 & 작성자. 여러명이면 comma로 구분
+:tested-by: Gildong Hong
+:authors: {tested-by}
+
+// 검수자, 여러명이면 comma로 구분
+:authorized-by: Wonchul Yoo
+
+// 문서 버전. 따로 버전이 없는 경우, 모두 주석 처리 할 것.
+:document-version: X.X.X
+:revnumber: {document-version}
+
+// Test 기간
+:test-start-date: 20XX-XX-XX
+:test-end-date: 20XX-XX-XX
+
+// Test 장소
+:test-place: Test Place
+
+// 문서 일자. 따로 문서 일자가 없는 경우, 모두 주석 처리 할 것.
+:issue-date: 20XX-XX-XX
+:revdate: {issue-date}
+
+// 인증을 받는 문서일 경우 approved_date 추가.
+:approved-date: 20XX-XX-XX
+:approved-by: Surveyor-Name

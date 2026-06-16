@@ -1,0 +1,78 @@
+base:
+  font-family: Inter
+  font-size: 10
+
+codespan:
+  font-family: FiraCode
+
+code:
+  font-family: FiraCode
+
+prose:
+  text-indent: 0
+
+font:
+  catalog:
+    merge: true
+    Inter:
+      normal: Inter-VariableFont_slnt,wght.ttf
+      bold: Inter-SemiBold.ttf
+      italic: Inter-Italic.ttf
+      bold_italic: Inter-SemiBoldItalic.ttf
+    SUIT:
+      normal: SUIT-Regular.ttf
+      bold: SUIT-SemiBold.ttf
+      italic: SUIT-Oblique.ttf
+      bold_italic: SUIT-SemiBoldOblique.ttf
+    FiraCode:
+      normal: FiraCode-Regular.ttf
+      bold: FiraCode-Bold.ttf
+      italic: FiraCode-Oblique.ttf
+      bold_italic: FiraCode-BoldOblique.ttf
+  fallbacks:
+    - SUIT
+
+heading:
+  h1:
+    font-style: bold
+    font-size: 30
+  h2:
+    font-size: 16
+    font-color: '659ADD'
+    font-style: bold
+  h3:
+    font-size: 14
+    font-style: bold
+  h4:
+    font-size: 12
+    font-style: bold
+  h5:
+    font-size: 10
+    font-style: bold
+
+caption:
+  font-color: '659ADD'
+  align: center
+
+role:
+  annotation: 
+    font-color: '659ADD'
+    font-style: italic
+  emphasis:
+    font-color: '2F1BAD'
+    font-style: italic
+  comment: 
+    font-color: 'D9D9D9'
+    font-style: italic
+  tbd:
+    font-color: 'FF00FF'
+    font-style: italic
+  green:
+    font-color: '00A651'
+  red:
+    font-color: 'CC0000'
+  text-left:
+    align: left
+  text-right:
+    align: right
+  

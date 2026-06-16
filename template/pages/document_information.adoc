@@ -1,0 +1,39 @@
+[frame=none,grid=none,cols=">1",width=100%]
+|===
+|[.abstract-confidential-label]#COMPANY CONFIDENTIAL#
+|===
+
+{empty} + 
+{empty} + 
+
+[.abstract-title]
+{product-name}
+
+[.abstract-subtitle]
+{document-title}
+
+[cols="<2h,3,2h,3"]
+|===
+| [.table-label]#Document No#     | {document-number} | Document Type    | {document-type}
+| [.table-label]#Product Name#    | {product-name}    | Final Editor     | {final-editor}
+| [.table-label]#Module Name#     | {module-name}     | Release Date     | {release-date}
+| [.table-label]#Project Manager# | {project-manager} | Document Version | {document-version}
+|===
+  
+{empty} + 
+{empty} + 
+{empty} + 
+{empty} + 
+  
+[.abstract-proprietary-box]
+****
+[.abstract-proprietary-title]#AVIKUS PROPRIETARY DATA#
+
+[.abstract-proprietary-body]
+This document contains confidential proprietary information. +
+Restricted to use only by Avikus employees or other persons authorized by Avikus in writing to use it. +
+Since it contains Avikus trade secrets, you cannot view, use, copy, distribute, or disclose this material +
+without the prior written approval of Avikus.
+****
+
+<<<

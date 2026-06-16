@@ -1,0 +1,19 @@
+sidebar:
+  background-color: 'FFFFFF'
+  border-color: '008B8F'
+  border-radius: 3
+  border-width: 0.1
+  padding: [14, 18, 14, 18]
+
+code:
+  background-color: 'EFEFFF'
+  border-width: 0.0
+  padding: [14, 18, 14, 18]
+
+
+admonition:
+  border-color: '008B8F'
+  border-radius: 3
+  border-width: 0.1
+  column-rule-color: '008B8F'
+  padding: [14, 18, 14, 18]

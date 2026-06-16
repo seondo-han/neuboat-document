@@ -1,0 +1,55 @@
+# 표지 서식
+title-page:
+  background-image: image:cover-page.png[fill=none,pdfwidth=100%,position=top center]
+  text-align: left
+
+  title:
+    top: 40%
+    font-style: bold
+    font-size: 30
+    font-color: '000000'
+      
+  authors:
+    content: '{final-editor}, {authors}'
+    font-size: 16
+    font-color: '659ADD'
+
+  revision: 
+    delimiter: ' / '
+    font-size: 16
+    font-color: '659ADD'
+
+  subtitle:
+    font-style: bold
+    font-size: 20
+    font-color: '000000'
+
+# 속표지 서식
+role:
+  abstract-confidential-label:
+    font-style: bold
+    font-size: 10
+    font-color: 'CC0000'
+  abstract-title:
+    font-style: bold
+    font-size: 23
+    font-color: '000000'
+    margin-top: 12
+    margin-bottom: 4
+  abstract-subtitle:
+    font-size: 18
+    font-color: '659ADD'
+    margin-top: 4
+    margin-bottom: 12
+  abstract-proprietary-box:
+    margin-top: 10cm
+  abstract-proprietary-title:
+    font-family: Inter
+    font-style: bold
+    font-size: 12
+    font-color: 'CC0000'
+  abstract-proprietary-body:
+    font-family: Inter
+    font-size: 9.5
+    font-color: '333333'
+  

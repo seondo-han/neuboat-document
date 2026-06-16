@@ -1,0 +1,48 @@
+services:
+  document-pdf:
+    build: .
+    image: neuboat-asciidoctor
+    container_name: document-template-pdf-builder
+    volumes:
+      - ${DOCUMENT_DIR}:/documents
+      - ${DOCUMENT_DIR}/output:/documents/output
+    working_dir: /documents
+    environment:
+      - OUTPUT_FILE=${OUTPUT_FILE:-document}
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        echo "Generating PDF..." &&
+        asciidoctor-pdf --version && \
+        asciidoctor-pdf \
+          -a pdf-fontsdir=/template/fonts \
+          -a pdf-themesdir=/template/theme \
+          -r asciidoctor-diagram \
+          -r asciidoctor-mathematical \
+          -r asciidoctor-lists \
+          -o "/documents/output/$${OUTPUT_FILE}.pdf" \
+          document.adoc &&
+        echo "PDF generation completed: ./output/$${OUTPUT_FILE}.pdf"
+
+  document-html:
+    image: asciidoctor/docker-asciidoctor:latest
+    container_name: document-template-html-builder
+    volumes:
+      - ${DOCUMENT_DIR}:/documents
+      - ${DOCUMENT_DIR}/output:/documents/output
+    working_dir: /documents
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        mkdir -p /documents/output/html &&
+        echo "Generating HTML..." &&
+        asciidoctor \
+          -r asciidoctor-diagram \
+          -a imagesoutdir=/documents/output/html/images \
+          -b html5 \
+          -D /documents/output/html \
+          -o index.html \
+          document.adoc &&
+        echo "HTML generation completed: ./output/html/index.html"

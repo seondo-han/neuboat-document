@@ -1,0 +1,56 @@
+page:
+  # margin: [4cm, 1.6cm, 3.0cm, 1.6cm]
+  margin: [4cm, 1.6cm, 3.0cm, 1.6cm]
+  numbering:
+    start-at: after-toc
+  background-image: image:header-image.png[fill=none,pdfwidth=100%,position=top center]
+
+
+header:
+  start_at: 2
+  height: 3.5cm
+  columns: <50% >50%
+  line-height: 1
+  border-width: 0.5
+  border-color: 8E8E8E
+  vertical-align: bottom
+  recto: &shared_header
+    left:
+      content: '{header-left}'
+      font-size: 12
+      font-color: '6F6F6F'
+    right:
+      content: '{header-right}'
+      font-size: 12
+      font-color: '659ADD'
+  verso: *shared_header
+
+
+footer:
+  start_at: 2
+  height: 3.0cm
+  line-height: 1
+  border-width: 0.5
+  border-color: 8E8E8E
+  vertical-align: middle
+  image-vertical-align: middle
+  padding: [0,0,2cm,0]
+  # 홀·짝 페이지 모두 동일 배치: 로고는 항상 좌측, 페이지 번호는 항상 우측.
+  recto: &shared_footer
+    columns: <28mm <170mm =12mm
+    left:
+      content: image:avikus-logo.png[pdfwidth=21.6mm]
+    center:
+      content: |
+        *Avikus Co. Ltd*  (06234) 11F, 70, Nonhyeon-ro 85-gil, Gangnam-gu, Seoul, Republic of Korea *www.avikus.ai* +
+        *[Confidential] Unauthorized distribution is strictly prohibited*
+      font-family: Inter
+      font-size: 7.5
+      font-color: 'A5A59D'
+      align: left
+    right:
+      content: '{page-number}'
+      font-family: Inter
+      font-size: 8.5
+      align: left
+  verso: *shared_footer

@@ -1,0 +1,35 @@
+// 제품 이름 (문서 소제목으로 들어감.)
+:product-name: HiNAS
+
+// 문서 이름 (문서 제목으로 들어감.)
+:document-title: Document Template
+:header-right: {document-title}
+
+// 문서 번호
+:document-number: AVK-XXX-XXXXXXX-0001
+:header-left: {document-number}
+
+// 모듈 이름. 없으면 - (hyphen)
+:module-name: doc-template
+
+// 문서 타입: Concept document, Test report, Design document 등
+:document-type: Template Document
+
+// 프로젝트 관리자: 보통 팀장팀 적으시면 됩니다. 
+:project-manager: Gildong Hong
+
+// 문서 주 편집자 혹은 주 저자. 저자 목록 맨 첫번째에 들어갑니다.
+:final-editor: Wonchul Yoo
+
+// 문서 저자. final editor 제외하고 작성. 별도로 없어도 주석 처리하지 말 것.
+:authors: Inbeom Kim, Sejin Kim
+
+// 문서 버전. 따로 버전이 없는 경우, 모두 주석 처리 할 것.
+:document-version: 1.0.0
+:revnumber: {document-version}
+
+// 문서 일자. 따로 문서 일자가 없는 경우, 모두 주석 처리 할 것.
+:release-date: 2026-04-24
+:revdate: {release-date}
+
+

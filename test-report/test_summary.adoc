@@ -1,0 +1,63 @@
+[frame=none,grid=none,cols=">1",width=100%]
+|===
+|[.abstract-confidential-label]#COMPANY CONFIDENTIAL#
+|===
+
+[.test-summary]
+[discrete]
+== {report-title}
+
+[discrete]
+=== {report-number}
+
+[cols="^.^2h,.^5"]
+|===
+| [.table-label]#Product Name (EUT)#
+| {product-name}
+
+| [.table-label]#Product Version#
+| {product-version}
+
+| [.table-label]#Test Period#
+| {test-start-date} - {test-end-date}
+
+| [.table-label]#Place of Testing#
+| {test-place}
+
+| [.table-label]#Test Specification#
+a|
+* List of Test Specification
+
+| [.table-label]#Issue Date#
+| {issue-date}
+
+| [.table-label]#Tested By#
+| {tested-by}
+
+| [.table-label]#Authorized By#
+| {authorized-by}
+
+// Approved date / Approved by가 둘다 있는 경우
+| [.table-label]#Approved#
+| {approved-date}, {approved-by}
+|===
+
+[discrete]
+==== TEST RESULTS: SUMMARY
+
+Test Results...
+
+{empty} +
+{empty} +
+
+[.abstract-proprietary-box]
+****
+[.abstract-proprietary-title]#AVIKUS PROPRIETARY DATA#
+
+[.abstract-proprietary-body]
+This document contains confidential proprietary information. +
+Restricted to use only by Avikus employees or other persons authorized by Avikus in writing to use it. +
+Since it contains Avikus trade secrets, you cannot view, use, copy, distribute, or disclose this material +
+without the prior written approval of Avikus.
+****
+<<<

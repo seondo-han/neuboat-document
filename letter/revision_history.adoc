@@ -1,0 +1,23 @@
+[.document-revision-title]
+[discrete]
+== Document Revision History
+
+[cols="1,4,2,2,2", options="header"]
+|===
+| Version
+| Description
+| Author +
+/Edited
+| Revised +
+/Approved
+| Date
+
+| V1.0.0
+| Initial Draft
+| Wonchul Yoo
+| Wonchul Yoo
+| 2026-04-24
+
+|===
+
+<<<

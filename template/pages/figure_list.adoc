@@ -1,0 +1,6 @@
+[discrete]
+== Figure List
+
+list-of::image[pagenum=true]
+
+<<<

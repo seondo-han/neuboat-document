@@ -1,0 +1,4 @@
+:include-document-information: include::_document_information.adoc[]
+:include-revision-history: include::_revision_history.adoc[]
+:include-figure-list: include::_figure_list.adoc[]
+:include-table-list: include::_table_list.adoc[]

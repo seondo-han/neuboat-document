@@ -1,0 +1,18 @@
+:sectnums:
+:sectnumlevels: 4
+:toc:
+:toc-placement: macro
+:toclevels: 3
+:icons: font
+:pdf-themesdir: ../template/theme
+:pdf-theme: pdf-theme.yml
+:imagesdir: images
+:imagesoutdir: generated-images
+:table-caption: Table
+:image-caption: Figure
+:stem: latexmath
+:eqnums: all
+:xrefstyle: short
+:source-highlighter: highlight.js
+:rouge-style: github
+:running-content-start-at: 2
